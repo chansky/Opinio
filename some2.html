@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta name="viewport" content="width=320;user-scalable=no"/>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+        <title>Feed Screen</title>
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+
+        <script type="text/javascript">
+        	var listCreated = false;
+
+        	function appendToList(){
+        		//document.write("wassup!");
+        		if(!listCreated){
+        			$("#poll").append("<ul id='list' data-role='listview' data-inset='true'></ul>");
+        			
+        			listCreated=true;
+        			$("#poll").trigger("create");
+        		}
+        		// $("#list").append(
+        		// 	"<li class='ui-field-contain'>
+          //               <input type='text' name='option' id='option' value='' placeholder='Option'/>
+        		// 	</li>");
+				$("#list").append("<li>Item</li>");
+        		$("#list").listview("refresh");
+        	}
+        </script>
+	</head>
+	
+	<body>
+		<div id="pollCreatePage" data-role="page">
+        	<div data-role="header">
+                <h1>Opinio</h1>
+            </div>
+            
+            <div data-role="content" id="content">
+            	<form id="poll">
+                <div data-role="fieldcontain" class="ui-hide-label">
+                    <label for="question"> Question: </label>
+                    <input type="text" name="question" id="question" value="" placeholder="Question"/>
+                </div> 
+                
+                	<input type="button" value="Add options" onclick="appendToList()"/>
+                </form> 
+            </div>
+        </div>
+	</body>
+</html>
